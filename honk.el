@@ -64,26 +64,27 @@ trashing it in the process, and doing its own thing."
 
 (defun honk-hourly ()
   "Honk every hour, on the hour."
-  (interactive
-   (unless *honk-timer*
-     (let* ((now (decode-time (current-time)))
-            (next-hour
-             (time-add (encode-time
-                        0
-                        0
-                        (nth 2 now)
-                        (nth 3 now)
-                        (nth 4 now)
-                        (nth 5 now))
-                       3600)))
-       (setq *honk-timer*
-             (run-at-time next-hour 3600 #'honk-the-hour))))))
+  (interactive)
+  (unless *honk-timer*
+    (let* ((now (decode-time (current-time)))
+           (next-hour
+            (time-add (encode-time
+                       0
+                       0
+                       (nth 2 now)
+                       (nth 3 now)
+                       (nth 4 now)
+                       (nth 5 now))
+                      3600)))
+      (setq *honk-timer*
+            (run-at-time next-hour 3600 #'honk-the-hour)))))
 
 (defun honk-stop ()
   "Cancel the hourly honk timer."
   (interactive)
   (when *honk-timer*
-    (cancel-timer *honk-timer*)))
+    (cancel-timer *honk-timer*)
+    (setq *honk-timer* nil)))
 
 (provide 'honk)
 ;;; honk.el ends here
