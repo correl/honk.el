@@ -2,7 +2,7 @@
 ;; Copyright (C) 2015-2019, Correl Roush
 
 ;; Author: Correl Roush <correl@gmail.com>
-;; URL: https://gist.github.com/correl/13047d283688ea408acc5c62270b0bfd
+;; URL: https://github.com/correl/honk.el
 ;; Version: 1.0
 ;; Keywords: honk, goose
 ;; Package-Requires: (emms)
